@@ -1,0 +1,135 @@
+%PDF-1.4
+1 0 obj
+<<
+  /Type /Catalog
+  /Pages 2 0 R
+>>
+endobj
+2 0 obj
+<<
+  /Type /Pages
+  /Kids [3 0 R]
+  /Count 1
+>>
+endobj
+3 0 obj
+<<
+  /Type /Page
+  /Parent 2 0 R
+  /MediaBox [0 0 595 842]
+  /Contents 4 0 R
+  /Resources <<
+    /Font <<
+      /F1 5 0 R
+      /F2 6 0 R
+    >>
+  >>
+>>
+endobj
+4 0 obj
+<<
+  /Length 1450
+>>
+stream
+BT
+/F1 22 Tf
+50 785 Td
+(FAZLIDDIN AKRAMJONOV) Tj
+0 -24 Td
+/F2 13 Tf
+(FRONTEND DEVELOPER) Tj
+0 -18 Td
+/F2 10 Tf
+(Email: akramjonovfazliddin765@gmail.com | Telegram: @akramjonov_fazliddin | GitHub: github.com/fazliddinak) Tj
+0 -22 Td
+/F1 13 Tf
+(PROFESSIONAL SUMMARY) Tj
+0 -15 Td
+/F2 10 Tf
+(Passionate Frontend Developer with 1 year of hands-on experience building clean, responsive,) Tj
+0 -13 Td
+(and user-centric web applications. Specializes in modern JavaScript, React, and Tailwind CSS.) Tj
+0 -13 Td
+(Undergraduate in Artificial Intelligence at Renessans University and Certified Graduate of IT Live Academy.) Tj
+0 -22 Td
+/F1 13 Tf
+(CORE TECHNICAL SKILLS) Tj
+0 -15 Td
+/F2 10 Tf
+(Styling & UI: Tailwind CSS (90%), CSS3 (88%), Semantic HTML5 (80%), Responsive Layouts) Tj
+0 -13 Td
+(Programming & Frameworks: JavaScript ES6+ (75%), React & React Router (60%), Modular ES6) Tj
+0 -13 Td
+(Tools & Platforms: Git, GitHub, Figma to Code, VS Code, REST Service Architecture) Tj
+0 -22 Td
+/F1 13 Tf
+(FEATURED PRODUCTION PROJECTS) Tj
+0 -16 Td
+/F1 11 Tf
+(1. LogiFlow - Enterprise Digital Logistics & Freight Platform) Tj
+0 -13 Td
+/F2 9.5 Tf
+(GitHub: https://github.com/fazliddinak/logist) Tj
+0 -12 Td
+(Production-ready logistics platform featuring live GPS route simulation, weighted smart freight) Tj
+0 -12 Td
+(matching (98%), multi-role portals, carrier bidding negotiation, and 30+ enterprise capabilities.) Tj
+0 -16 Td
+/F1 11 Tf
+(2. Bank Internal CRM - Credit Management System) Tj
+0 -13 Td
+/F2 9.5 Tf
+(GitHub: https://github.com/fazliddinak/bank) Tj
+0 -12 Td
+(Internal credit risk analysis, customer loan management and data visualization built with React,) Tj
+0 -12 Td
+(Tailwind CSS, TanStack Query, and Recharts.) Tj
+0 -22 Td
+/F1 13 Tf
+(EDUCATION & CERTIFICATIONS) Tj
+0 -15 Td
+/F1 11 Tf
+(Renessans University (2024 - Present)) Tj
+0 -13 Td
+/F2 10 Tf
+(Bachelor of Science in Artificial Intelligence) Tj
+0 -16 Td
+/F1 11 Tf
+(IT Live Academy (2024)) Tj
+0 -13 Td
+/F2 10 Tf
+(Certified Frontend Development Graduate) Tj
+ET
+endstream
+endobj
+5 0 obj
+<<
+  /Type /Font
+  /Subtype /Type1
+  /BaseFont /Helvetica-Bold
+>>
+endobj
+6 0 obj
+<<
+  /Type /Font
+  /Subtype /Type1
+  /BaseFont /Helvetica
+>>
+endobj
+xref
+0 7
+0000000000 65535 f 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000115 00000 n 
+0000000266 00000 n 
+0000001769 00000 n 
+0000001850 00000 n 
+trailer
+<<
+  /Size 7
+  /Root 1 0 R
+>>
+startxref
+1926
+%%EOF

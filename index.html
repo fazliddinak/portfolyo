@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fazliddin Akramjonov | Frontend Developer &amp; UI Specialist</title>
+  <meta name="description" content="Portfolio of Fazliddin Akramjonov — Frontend Developer skilled in React, Tailwind CSS, JavaScript, and Modern Web Architectures.">
+  <meta name="keywords" content="Fazliddin Akramjonov, Frontend Developer, React, Tailwind CSS, JavaScript, Portfolio, Web Developer, Tashkent">
+  <meta name="author" content="Fazliddin Akramjonov">
+
+  <!-- Open Graph Metadata -->
+  <meta property="og:title" content="Fazliddin Akramjonov | Frontend Developer">
+  <meta property="og:description" content="Explore production web applications, Bank CRM system, and interactive frontend showcases.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="assets/images/bank-crm.svg">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            space: {
+              950: '#07090F',
+              900: '#0b0f19',
+              850: '#0f172a',
+              800: '#131c31'
+            },
+            electric: {
+              blue: '#38bdf8',
+              cyan: '#00f0ff',
+              purple: '#a855f7'
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            display: ['Space Grotesk', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace']
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="bg-[#07090F] text-slate-100 font-sans selection:bg-sky-500/30 selection:text-sky-200">
+
+  <!-- Scroll Progress Indicator -->
+  <div id="scroll-progress"></div>
+
+  <!-- Interactive Canvas Background -->
+  <canvas id="bg-canvas"></canvas>
+
+  <!-- Ambient Glowing Accents -->
+  <div class="ambient-glow-1"></div>
+  <div class="ambient-glow-2"></div>
+
+  <!-- Desktop Custom Magnetic Cursor -->
+  <div class="custom-cursor-dot"></div>
+  <div class="custom-cursor-ring"></div>
+
+  <!-- ========================================================================
+       NAVIGATION BAR
+       ======================================================================== -->
+  <header class="fixed top-0 left-0 right-0 z-50 glass-nav transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      
+      <!-- Logo / Name -->
+      <a href="#hero" class="flex items-center gap-2.5 group">
+        <span class="w-10 h-10 rounded-xl bg-gradient-to-tr from-sky-500 to-purple-600 p-[1.5px] flex items-center justify-center shadow-[0_0_15px_rgba(56,189,248,0.3)] group-hover:shadow-[0_0_25px_rgba(56,189,248,0.6)] transition-all">
+          <span class="w-full h-full bg-[#07090F] rounded-[10px] flex items-center justify-center font-display font-extrabold text-lg text-white">
+            FA
+          </span>
+        </span>
+        <div class="flex flex-col">
+          <span class="font-display font-bold text-base tracking-tight text-white group-hover:text-sky-400 transition-colors">
+            FAZLIDDIN
+          </span>
+          <span class="text-[10px] font-mono tracking-widest text-slate-400 -mt-1 uppercase">
+            Frontend Dev
+          </span>
+        </div>
+      </a>
+
+      <!-- Desktop Nav Links -->
+      <nav class="hidden md:flex items-center gap-8">
+        <a href="#about" data-i18n="nav.about" class="text-sm font-medium text-slate-300 hover:text-sky-400 transition-colors">About</a>
+        <a href="#skills" data-i18n="nav.skills" class="text-sm font-medium text-slate-300 hover:text-sky-400 transition-colors">Skills</a>
+        <a href="#projects" data-i18n="nav.projects" class="text-sm font-medium text-slate-300 hover:text-sky-400 transition-colors">Projects</a>
+        <a href="#experience" data-i18n="nav.experience" class="text-sm font-medium text-slate-300 hover:text-sky-400 transition-colors">Experience</a>
+        <a href="#services" data-i18n="nav.services" class="text-sm font-medium text-slate-300 hover:text-sky-400 transition-colors">Services</a>
+        <a href="#contact" data-i18n="nav.contact" class="text-sm font-medium text-slate-300 hover:text-sky-400 transition-colors">Contact</a>
+      </nav>
+
+      <!-- Language Switcher & CTA -->
+      <div class="flex items-center gap-4">
+        <!-- Language Switcher (EN / UZ) -->
+        <button id="lang-toggle-btn" class="lang-switch-btn" title="Switch Language (EN / UZ)">
+          <span class="lang-pill active" data-lang="en">EN</span>
+          <span class="lang-pill" data-lang="uz">UZ</span>
+        </button>
+
+        <!-- Let's Talk Button -->
+        <a href="#contact" class="hidden sm:inline-flex btn-glow-primary px-5 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider items-center gap-2">
+          <span data-i18n="nav.talk">Let's Talk</span>
+          <span class="text-sky-200">→</span>
+        </a>
+
+        <!-- Mobile Menu Toggle Button -->
+        <button id="mobile-menu-toggle" class="md:hidden p-2.5 rounded-xl bg-slate-900 border border-slate-800 text-slate-300 hover:text-white" aria-label="Toggle Navigation Menu">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- Mobile Drawer Menu -->
+  <div id="mobile-drawer" class="fixed inset-0 z-50 hidden">
+    <div class="fixed inset-0 bg-black/80 backdrop-blur-md" id="mobile-drawer-close"></div>
+    <div class="fixed top-0 right-0 bottom-0 w-3/4 max-w-xs bg-[#0b0f19] border-l border-slate-800 p-6 flex flex-col justify-between z-10">
+      <div>
+        <div class="flex items-center justify-between pb-6 border-b border-slate-800">
+          <span class="font-display font-bold text-lg text-white">Navigation</span>
+          <button id="mobile-drawer-close-btn" onclick="document.getElementById('mobile-drawer').classList.add('hidden'); document.body.style.overflow='';" class="p-2 text-slate-400 hover:text-white">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+          </button>
+        </div>
+        <nav class="mt-6 flex flex-col gap-4">
+          <a href="#about" class="mobile-nav-link text-base font-medium text-slate-200 hover:text-sky-400 py-1" data-i18n="nav.about">About</a>
+          <a href="#skills" class="mobile-nav-link text-base font-medium text-slate-200 hover:text-sky-400 py-1" data-i18n="nav.skills">Skills</a>
+          <a href="#projects" class="mobile-nav-link text-base font-medium text-slate-200 hover:text-sky-400 py-1" data-i18n="nav.projects">Projects</a>
+          <a href="#experience" class="mobile-nav-link text-base font-medium text-slate-200 hover:text-sky-400 py-1" data-i18n="nav.experience">Experience</a>
+          <a href="#services" class="mobile-nav-link text-base font-medium text-slate-200 hover:text-sky-400 py-1" data-i18n="nav.services">Services</a>
+          <a href="#contact" class="mobile-nav-link text-base font-medium text-slate-200 hover:text-sky-400 py-1" data-i18n="nav.contact">Contact</a>
+        </nav>
+      </div>
+
+      <div class="pt-6 border-t border-slate-800">
+        <a href="#contact" class="mobile-nav-link w-full btn-glow-primary py-3 rounded-xl text-center text-xs font-bold uppercase tracking-wider block">
+          Let's Talk
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <main class="relative z-10 pt-20">
+
+    <!-- ========================================================================
+         PHASE 3.1: HERO SECTION
+         ======================================================================== -->
+    <section id="hero" class="min-h-[calc(100vh-5rem)] flex items-center justify-center px-4 sm:px-6 lg:px-8 py-16 relative">
+      <div class="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        
+        <!-- Left: Headline & Bio -->
+        <div class="lg:col-span-7 flex flex-col items-start text-left">
+          
+          <!-- Availability Badge -->
+          <div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-slate-900/90 border border-slate-800 text-xs font-medium text-slate-300 shadow-inner mb-6 backdrop-blur-md">
+            <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-ping"></span>
+            <span data-i18n="hero.status">Available for Work &amp; Projects</span>
+          </div>
+
+          <!-- Main Greeting & Name -->
+          <div class="space-y-1">
+            <p class="text-sm font-mono tracking-widest text-sky-400 uppercase font-semibold" data-i18n="hero.greeting">
+              HELLO, I'M
+            </p>
+            <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight font-display text-white" data-i18n="hero.name">
+              FAZLIDDIN AKRAMJONOV
+            </h1>
+          </div>
+
+          <!-- Dynamic Typing Role -->
+          <div class="mt-4 flex items-center text-2xl sm:text-3xl font-bold font-display text-slate-200">
+            <span class="gradient-text-brand" id="typing-text">FRONTEND DEVELOPER</span>
+            <span class="typing-caret"></span>
+          </div>
+
+          <!-- Hero Description -->
+          <p class="mt-6 text-base sm:text-lg text-slate-400 max-w-2xl leading-relaxed font-normal" data-i18n="hero.description">
+            I transform ideas into modern, responsive, and interactive digital experiences. Dedicated to building clean architectures, high-performance web applications, and pixel-perfect user interfaces.
+          </p>
+
+          <!-- Action Buttons & Socials -->
+          <div class="mt-8 flex flex-wrap items-center gap-4">
+            <a href="#projects" class="btn-glow-primary px-7 py-3.5 rounded-xl text-sm font-bold tracking-wide inline-flex items-center gap-2">
+              <span data-i18n="hero.viewWork">Explore Projects</span>
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+            </a>
+
+            <a href="#contact" class="btn-glow-secondary px-7 py-3.5 rounded-xl text-sm font-semibold inline-flex items-center gap-2">
+              <span data-i18n="hero.contactBtn">Contact Me</span>
+              <span class="text-sky-400">→</span>
+            </a>
+
+            <!-- Social Links -->
+            <div class="flex items-center gap-2 sm:ml-4">
+              <a href="https://github.com/fazliddinak" target="_blank" rel="noopener noreferrer" class="p-3 rounded-xl bg-slate-900 border border-slate-800 text-slate-400 hover:text-white hover:border-sky-500/50 transition-all" title="GitHub Profile">
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+              </a>
+
+              <a href="https://t.me/akramjonov_fazliddin" target="_blank" rel="noopener noreferrer" class="p-3 rounded-xl bg-slate-900 border border-slate-800 text-slate-400 hover:text-sky-400 hover:border-sky-500/50 transition-all" title="Telegram">
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.161c-.18.721-2.007 8.358-2.923 11.961-.387 1.524-.961 1.701-1.536 1.156l-4.14-3.056-1.996 1.923c-.221.221-.407.407-.834.407l.297-4.213 7.669-6.93c.334-.297-.073-.462-.518-.166l-9.479 5.968-4.086-1.277c-.889-.278-.907-.889.185-1.315l15.98-6.157c.74-.278 1.388.167 1.185 1.644z"/></svg>
+              </a>
+            </div>
+          </div>
+
+          <!-- Quick Metrics Bar -->
+          <div class="mt-12 pt-8 border-t border-slate-800/80 w-full grid grid-cols-3 gap-4">
+            <div>
+              <div class="text-2xl sm:text-3xl font-extrabold font-display text-white" data-i18n="hero.stats.experience">1+ Year</div>
+              <div class="text-xs font-mono text-slate-400 uppercase mt-1" data-i18n="hero.stats.expLabel">Active Coding</div>
+            </div>
+            <div>
+              <div class="text-2xl sm:text-3xl font-extrabold font-display text-sky-400" data-i18n="hero.stats.techCount">100%</div>
+              <div class="text-xs font-mono text-slate-400 uppercase mt-1" data-i18n="hero.stats.techLabel">Verified Skills</div>
+            </div>
+            <div>
+              <div class="text-2xl sm:text-3xl font-extrabold font-display text-purple-400" data-i18n="hero.stats.projectsCount">Production</div>
+              <div class="text-xs font-mono text-slate-400 uppercase mt-1" data-i18n="hero.stats.projectsLabel">Quality Focus</div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Right: Futuristic Profile Avatar -->
+        <div class="lg:col-span-5 flex justify-center relative">
+          <div class="relative w-72 sm:w-96 aspect-square">
+            
+            <!-- Rotating Glow Aura -->
+            <div class="absolute inset-0 rounded-full bg-gradient-to-tr from-sky-500/20 via-purple-600/20 to-pink-500/10 blur-2xl animate-pulse"></div>
+
+            <!-- Avatar Image Vector -->
+            <img src="assets/images/avatar.svg" alt="Fazliddin Akramjonov Avatar" class="w-full h-full object-contain relative z-10 animate-float-slow drop-shadow-[0_20px_35px_rgba(56,189,248,0.25)]">
+
+            <!-- Floating Tech Badges -->
+            <div class="absolute -top-3 -right-3 z-20 px-3.5 py-1.5 rounded-xl bg-slate-900/90 border border-sky-400/40 backdrop-blur-md shadow-lg flex items-center gap-2">
+              <span class="w-2 h-2 rounded-full bg-sky-400"></span>
+              <span class="text-xs font-mono font-bold text-sky-300">Tailwind 90%</span>
+            </div>
+
+            <div class="absolute -bottom-3 -left-3 z-20 px-3.5 py-1.5 rounded-xl bg-slate-900/90 border border-purple-400/40 backdrop-blur-md shadow-lg flex items-center gap-2">
+              <span class="w-2 h-2 rounded-full bg-purple-400"></span>
+              <span class="text-xs font-mono font-bold text-purple-300">React Core</span>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         PHASE 3.2: ABOUT ME SECTION
+         ======================================================================== -->
+    <section id="about" class="py-24 px-4 sm:px-6 lg:px-8 border-t border-slate-900">
+      <div class="max-w-7xl mx-auto">
+        
+        <!-- Section Header -->
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <span class="text-xs font-mono font-bold text-sky-400 tracking-widest uppercase px-3 py-1 rounded-full bg-sky-500/10 border border-sky-500/20" data-i18n="about.badge">
+            WHO I AM
+          </span>
+          <h2 class="text-3xl sm:text-4xl font-extrabold font-display text-white mt-4" data-i18n="about.heading">
+            Building Intuitive Web Experiences with Code &amp; Passion
+          </h2>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-stretch">
+          
+          <!-- Left: Narrative Details -->
+          <div class="lg:col-span-7 space-y-6">
+            
+            <div class="glass-panel p-8 rounded-2xl border border-slate-800">
+              <h3 class="text-lg font-bold text-slate-100 font-display flex items-center gap-2" data-i18n="about.journeyTitle">
+                <span class="text-sky-400">⚡</span> My Development Journey
+              </h3>
+              <p class="mt-3 text-sm text-slate-300 leading-relaxed" data-i18n="about.journeyDesc">
+                I began my software engineering journey with intensive training in modern Frontend Development at IT Live Academy. Concurrently, I am pursuing my higher education in Artificial Intelligence at Renessans University. Over the past year, I have focused relentlessly on mastering modern web standards, crafting dynamic web interfaces with React, and creating sleek, responsive layouts with Tailwind CSS.
+              </p>
+            </div>
+
+            <div class="glass-panel p-8 rounded-2xl border border-slate-800">
+              <h3 class="text-lg font-bold text-slate-100 font-display flex items-center gap-2" data-i18n="about.philosophyTitle">
+                <span class="text-purple-400">💎</span> My Engineering Philosophy
+              </h3>
+              <p class="mt-3 text-sm text-slate-300 leading-relaxed" data-i18n="about.philosophyDesc">
+                Clean code is not just readable; it's maintainable, scalable, and built around user delight. I believe in mobile-first responsiveness, minimal friction, accessible components, and seamless animations that enhance rather than distract.
+              </p>
+            </div>
+
+            <div class="glass-panel p-8 rounded-2xl border border-slate-800">
+              <h3 class="text-lg font-bold text-slate-100 font-display flex items-center gap-2" data-i18n="about.goalsTitle">
+                <span class="text-emerald-400">🎯</span> My Career Goals
+              </h3>
+              <p class="mt-3 text-sm text-slate-300 leading-relaxed" data-i18n="about.goalsDesc">
+                To contribute to ambitious software teams, engineer high-traffic production web applications, and merge modern frontend ecosystems with intelligent digital services.
+              </p>
+            </div>
+
+          </div>
+
+          <!-- Right: Key Highlights & CV Download -->
+          <div class="lg:col-span-5 flex flex-col justify-between glass-panel p-8 rounded-2xl border border-slate-800">
+            <div>
+              <div class="flex items-center justify-between pb-4 border-b border-slate-800">
+                <h3 class="text-base font-bold text-slate-100 font-display" data-i18n="about.strengthsTitle">
+                  Core Strengths
+                </h3>
+                <span class="text-xs font-mono text-sky-400">Verified</span>
+              </div>
+
+              <ul class="mt-6 space-y-4">
+                <li class="flex items-start gap-3 text-sm text-slate-300">
+                  <span class="text-sky-400 mt-0.5">✔</span>
+                  <span>Tailwind CSS &amp; Modern Responsive Architecture <strong>(90%)</strong></span>
+                </li>
+                <li class="flex items-start gap-3 text-sm text-slate-300">
+                  <span class="text-sky-400 mt-0.5">✔</span>
+                  <span>Semantic HTML5 &amp; Advanced CSS3 Animations <strong>(88%)</strong></span>
+                </li>
+                <li class="flex items-start gap-3 text-sm text-slate-300">
+                  <span class="text-sky-400 mt-0.5">✔</span>
+                  <span>Core JavaScript (ES6+), DOM &amp; Async logic <strong>(75%)</strong></span>
+                </li>
+                <li class="flex items-start gap-3 text-sm text-slate-300">
+                  <span class="text-sky-400 mt-0.5">✔</span>
+                  <span>React Component Architecture &amp; React Router <strong>(60%)</strong></span>
+                </li>
+                <li class="flex items-start gap-3 text-sm text-slate-300">
+                  <span class="text-sky-400 mt-0.5">✔</span>
+                  <span>Git/GitHub Version Control &amp; Figma-to-Code</span>
+                </li>
+              </ul>
+
+              <!-- Academic Badge -->
+              <div class="mt-8 p-4 rounded-xl bg-slate-900/90 border border-purple-500/30 flex items-center gap-3">
+                <span class="p-2 rounded-lg bg-purple-500/10 text-purple-400">🎓</span>
+                <div class="text-xs">
+                  <div class="font-bold text-slate-200" data-i18n="about.academicTag">AI Student @ Renessans University</div>
+                  <div class="text-slate-400 mt-0.5">Graduated from IT Live Academy</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Download Official CV Button -->
+            <div class="mt-8 pt-6 border-t border-slate-800">
+              <a href="Fazliddin_Akramjonov_CV_fixed.pdf" download="Fazliddin_Akramjonov_CV_fixed.pdf" class="w-full btn-glow-primary py-3.5 px-6 rounded-xl text-center text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+                <span data-i18n="about.downloadCv">Download Official CV (PDF)</span>
+              </a>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         PHASE 3.3: TECH STACK & SKILLS
+         ======================================================================== -->
+    <section id="skills" class="py-24 px-4 sm:px-6 lg:px-8 border-t border-slate-900 bg-space-950/60">
+      <div class="max-w-7xl mx-auto">
+        
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <span class="text-xs font-mono font-bold text-sky-400 tracking-widest uppercase px-3 py-1 rounded-full bg-sky-500/10 border border-sky-500/20" data-i18n="skills.badge">
+            TECH STACK
+          </span>
+          <h2 class="text-3xl sm:text-4xl font-extrabold font-display text-white mt-4" data-i18n="skills.heading">
+            Technologies I Know &amp; Master
+          </h2>
+          <p class="mt-3 text-sm text-slate-400" data-i18n="skills.subheading">
+            Only verified technologies I actively code with and implement in real projects.
+          </p>
+        </div>
+
+        <!-- Dynamic Skills Grid -->
+        <div id="skills-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <!-- Rendered dynamically by app.js -->
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         PHASE 3.4: FEATURED PROJECTS
+         ======================================================================== -->
+    <section id="projects" class="py-24 px-4 sm:px-6 lg:px-8 border-t border-slate-900">
+      <div class="max-w-7xl mx-auto">
+        
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
+          <div>
+            <span class="text-xs font-mono font-bold text-purple-400 tracking-widest uppercase px-3 py-1 rounded-full bg-purple-500/10 border border-purple-500/20" data-i18n="projects.badge">
+              PORTFOLIO
+            </span>
+            <h2 class="text-3xl sm:text-4xl font-extrabold font-display text-white mt-4" data-i18n="projects.heading">
+              Featured Engineering Projects
+            </h2>
+            <p class="mt-2 text-sm text-slate-400" data-i18n="projects.subheading">
+              Explore real-world applications and interactive concept demonstrations.
+            </p>
+          </div>
+
+          <!-- Project Filter Tabs -->
+          <div class="mt-6 md:mt-0 flex flex-wrap gap-2">
+            <button class="project-filter-btn active py-2 px-4 rounded-xl text-xs font-semibold bg-sky-500 text-slate-950 transition-all" data-filter="all" data-i18n="projects.filterAll">
+              All Projects
+            </button>
+            <button class="project-filter-btn py-2 px-4 rounded-xl text-xs font-semibold bg-slate-900 text-slate-300 border border-slate-800 hover:border-slate-700 transition-all" data-filter="real" data-i18n="projects.filterReal">
+              Verified Real Projects
+            </button>
+            <button class="project-filter-btn py-2 px-4 rounded-xl text-xs font-semibold bg-slate-900 text-slate-300 border border-slate-800 hover:border-slate-700 transition-all" data-filter="demo" data-i18n="projects.filterDemo">
+              Interactive Concepts
+            </button>
+          </div>
+        </div>
+
+        <!-- Projects Grid -->
+        <div id="projects-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- Rendered dynamically by app.js -->
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         PHASE 3.5: EXPERIENCE & EDUCATION
+         ======================================================================== -->
+    <section id="experience" class="py-24 px-4 sm:px-6 lg:px-8 border-t border-slate-900 bg-space-950/60">
+      <div class="max-w-7xl mx-auto">
+        
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <span class="text-xs font-mono font-bold text-sky-400 tracking-widest uppercase px-3 py-1 rounded-full bg-sky-500/10 border border-sky-500/20" data-i18n="experience.badge">
+            CAREER PATH
+          </span>
+          <h2 class="text-3xl sm:text-4xl font-extrabold font-display text-white mt-4" data-i18n="experience.heading">
+            Experience &amp; Education Timeline
+          </h2>
+          <p class="mt-3 text-sm text-slate-400" data-i18n="experience.subheading">
+            Academic background, specialized certifications, and practical programming history.
+          </p>
+        </div>
+
+        <!-- Timeline Container -->
+        <div class="relative max-w-4xl mx-auto">
+          <!-- Spine -->
+          <div class="timeline-spine"></div>
+          
+          <!-- Timeline Items -->
+          <div id="timeline-container">
+            <!-- Rendered dynamically by translations & app.js -->
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         PHASE 3.6: SERVICES SECTION
+         ======================================================================== -->
+    <section id="services" class="py-24 px-4 sm:px-6 lg:px-8 border-t border-slate-900">
+      <div class="max-w-7xl mx-auto">
+        
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <span class="text-xs font-mono font-bold text-purple-400 tracking-widest uppercase px-3 py-1 rounded-full bg-purple-500/10 border border-purple-500/20" data-i18n="services.badge">
+            WHAT I DO
+          </span>
+          <h2 class="text-3xl sm:text-4xl font-extrabold font-display text-white mt-4" data-i18n="services.heading">
+            Services Aligned with My Actual Skills
+          </h2>
+          <p class="mt-3 text-sm text-slate-400" data-i18n="services.subheading">
+            Professional web development solutions delivered with clean code and high performance.
+          </p>
+        </div>
+
+        <!-- Services Grid -->
+        <div id="services-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- Rendered dynamically by app.js -->
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         PHASE 3.7: CONTACT SECTION
+         ======================================================================== -->
+    <section id="contact" class="py-24 px-4 sm:px-6 lg:px-8 border-t border-slate-900 bg-space-950/80">
+      <div class="max-w-7xl mx-auto">
+        
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <span class="text-xs font-mono font-bold text-sky-400 tracking-widest uppercase px-3 py-1 rounded-full bg-sky-500/10 border border-sky-500/20" data-i18n="contact.badge">
+            GET IN TOUCH
+          </span>
+          <h2 class="text-3xl sm:text-4xl font-extrabold font-display text-white mt-4" data-i18n="contact.heading">
+            Let's Build Something Exceptional Together
+          </h2>
+          <p class="mt-3 text-sm text-slate-400" data-i18n="contact.subheading">
+            Feel free to reach out for job opportunities, freelance projects, or professional collaboration.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10">
+          
+          <!-- Direct Channels -->
+          <div class="lg:col-span-5 glass-panel p-8 rounded-2xl border border-slate-800 flex flex-col justify-between">
+            <div>
+              <h3 class="text-lg font-bold text-slate-100 font-display mb-6" data-i18n="contact.directHeading">
+                Direct Contact Channels
+              </h3>
+
+              <div class="space-y-6">
+                <!-- Email -->
+                <div class="flex items-start gap-4">
+                  <div class="p-3 rounded-xl bg-sky-500/10 text-sky-400 border border-sky-500/20">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                  </div>
+                  <div>
+                    <div class="text-xs font-mono text-slate-400 uppercase" data-i18n="contact.directEmailLabel">Official Email:</div>
+                    <a href="mailto:akramjonovfazliddin765@gmail.com" class="text-sm font-semibold text-slate-200 hover:text-sky-400 transition-colors">
+                      akramjonovfazliddin765@gmail.com
+                    </a>
+                  </div>
+                </div>
+
+                <!-- Telegram -->
+                <div class="flex items-start gap-4">
+                  <div class="p-3 rounded-xl bg-purple-500/10 text-purple-400 border border-purple-500/20">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.161c-.18.721-2.007 8.358-2.923 11.961-.387 1.524-.961 1.701-1.536 1.156l-4.14-3.056-1.996 1.923c-.221.221-.407.407-.834.407l.297-4.213 7.669-6.93c.334-.297-.073-.462-.518-.166l-9.479 5.968-4.086-1.277c-.889-.278-.907-.889.185-1.315l15.98-6.157c.74-.278 1.388.167 1.185 1.644z"/></svg>
+                  </div>
+                  <div>
+                    <div class="text-xs font-mono text-slate-400 uppercase" data-i18n="contact.directTelegramLabel">Telegram Username:</div>
+                    <a href="https://t.me/akramjonov_fazliddin" target="_blank" rel="noopener noreferrer" class="text-sm font-semibold text-slate-200 hover:text-purple-400 transition-colors">
+                      @akramjonov_fazliddin
+                    </a>
+                  </div>
+                </div>
+
+                <!-- Location -->
+                <div class="flex items-start gap-4">
+                  <div class="p-3 rounded-xl bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                  </div>
+                  <div>
+                    <div class="text-xs font-mono text-slate-400 uppercase" data-i18n="contact.directLocationLabel">Location &amp; Status:</div>
+                    <div class="text-sm font-medium text-slate-200" data-i18n="contact.directLocationVal">
+                      Tashkent, Uzbekistan (Open to Remote / On-site)
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Quick Action Box -->
+            <div class="mt-8 p-4 rounded-xl bg-slate-900/90 border border-slate-800 text-xs text-slate-400 leading-relaxed">
+              💡 <span class="text-slate-300 font-semibold">Fast Response Guarantee:</span> I actively monitor both Telegram and Gmail. Expect a professional reply within 24 hours.
+            </div>
+          </div>
+
+          <!-- Contact Form -->
+          <div class="lg:col-span-7 glass-panel p-8 rounded-2xl border border-slate-800">
+            <h3 class="text-lg font-bold text-slate-100 font-display mb-6" data-i18n="contact.formTitle">
+              Send Me a Message
+            </h3>
+
+            <form id="portfolio-contact-form" class="space-y-4">
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label for="contact-name" class="block text-xs font-mono text-slate-300 mb-1.5" data-i18n="contact.nameLabel">Your Name</label>
+                  <input type="text" id="contact-name" required class="w-full px-4 py-3 rounded-xl bg-slate-900 border border-slate-800 text-sm text-slate-100 focus:outline-none focus:border-sky-400 focus:ring-1 focus:ring-sky-400 transition-all" data-i18n-placeholder="contact.namePlaceholder" placeholder="e.g. Alex Johnson">
+                </div>
+
+                <div>
+                  <label for="contact-email" class="block text-xs font-mono text-slate-300 mb-1.5" data-i18n="contact.emailLabel">Your Email</label>
+                  <input type="email" id="contact-email" required class="w-full px-4 py-3 rounded-xl bg-slate-900 border border-slate-800 text-sm text-slate-100 focus:outline-none focus:border-sky-400 focus:ring-1 focus:ring-sky-400 transition-all" data-i18n-placeholder="contact.emailPlaceholder" placeholder="alex@example.com">
+                </div>
+              </div>
+
+              <div>
+                <label for="contact-subject" class="block text-xs font-mono text-slate-300 mb-1.5" data-i18n="contact.subjectLabel">Subject</label>
+                <input type="text" id="contact-subject" required class="w-full px-4 py-3 rounded-xl bg-slate-900 border border-slate-800 text-sm text-slate-100 focus:outline-none focus:border-sky-400 focus:ring-1 focus:ring-sky-400 transition-all" data-i18n-placeholder="contact.subjectPlaceholder" placeholder="Job Opportunity / Project Inquiry">
+              </div>
+
+              <div>
+                <label for="contact-message" class="block text-xs font-mono text-slate-300 mb-1.5" data-i18n="contact.messageLabel">Message</label>
+                <textarea id="contact-message" rows="4" required class="w-full px-4 py-3 rounded-xl bg-slate-900 border border-slate-800 text-sm text-slate-100 focus:outline-none focus:border-sky-400 focus:ring-1 focus:ring-sky-400 transition-all" data-i18n-placeholder="contact.messagePlaceholder" placeholder="Hi Fazliddin, I would like to discuss..."></textarea>
+              </div>
+
+              <button type="submit" id="contact-submit-btn" class="w-full btn-glow-primary py-3.5 rounded-xl text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2">
+                <span data-i18n="contact.submitBtn">Send Message Now</span>
+                <span>→</span>
+              </button>
+            </form>
+
+            <!-- Interactive Feedback Output -->
+            <div id="form-feedback" class="mt-6"></div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ========================================================================
+       PHASE 3.8: FOOTER
+       ======================================================================== -->
+  <footer class="border-t border-slate-900 bg-[#05070c] py-12 px-4 sm:px-6 lg:px-8 relative z-10">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+      
+      <div class="flex items-center gap-3">
+        <span class="w-8 h-8 rounded-lg bg-gradient-to-tr from-sky-500 to-purple-600 p-[1px] flex items-center justify-center">
+          <span class="w-full h-full bg-[#07090F] rounded-[7px] flex items-center justify-center font-display font-bold text-xs text-white">
+            FA
+          </span>
+        </span>
+        <div>
+          <div class="font-display font-bold text-sm text-white">Fazliddin Akramjonov</div>
+          <div class="text-xs text-slate-400" data-i18n="footer.tagline">Frontend Developer dedicated to creating clean, performant, and memorable web experiences.</div>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-6 text-xs text-slate-400">
+        <a href="https://github.com/fazliddinak" target="_blank" rel="noopener noreferrer" class="hover:text-sky-400 transition-colors">GitHub</a>
+        <a href="https://t.me/akramjonov_fazliddin" target="_blank" rel="noopener noreferrer" class="hover:text-sky-400 transition-colors">Telegram</a>
+        <a href="mailto:akramjonovfazliddin765@gmail.com" class="hover:text-sky-400 transition-colors">Email</a>
+        <a href="Fazliddin_Akramjonov_CV_fixed.pdf" download="Fazliddin_Akramjonov_CV_fixed.pdf" class="hover:text-purple-400 transition-colors">Download CV</a>
+      </div>
+
+      <div class="text-xs text-slate-500 text-center md:text-right" data-i18n="footer.rights">
+        &copy; 2026 Fazliddin Akramjonov. All rights reserved.
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- Back to Top Button -->
+  <button id="back-to-top" class="fixed bottom-6 right-6 z-40 p-3 rounded-xl bg-slate-900/90 border border-slate-800 text-slate-300 hover:text-sky-400 hover:border-sky-500/50 shadow-xl opacity-0 pointer-events-none transition-all duration-300" aria-label="Back to top">
+    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"/></svg>
+  </button>
+
+  <!-- ========================================================================
+       PROJECT PREVIEW MODAL
+       ======================================================================== -->
+  <div id="project-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 sm:p-6 overflow-y-auto">
+    <div class="fixed inset-0 bg-black/85 backdrop-blur-md modal-backdrop"></div>
+    <div class="relative bg-space-900 border border-slate-800 rounded-2xl max-w-2xl w-full p-6 sm:p-8 z-10 shadow-2xl max-h-[90vh] overflow-y-auto">
+      <button onclick="window.closeProjectModal()" class="absolute top-4 right-4 p-2 text-slate-400 hover:text-white rounded-lg bg-slate-800/60" aria-label="Close modal">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+      <div id="project-modal-content"></div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="assets/js/translations.js"></script>
+  <script src="assets/js/projects-data.js"></script>
+  <script src="assets/js/canvas-bg.js"></script>
+  <script src="assets/js/app.js"></script>
+
+</body>
+</html>
